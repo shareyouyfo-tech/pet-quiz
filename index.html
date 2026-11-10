@@ -270,7 +270,7 @@
 
   <script>
     const CONFIG = {
-      GAS_ENDPOINT_URL: "", 
+      GAS_ENDPOINT_URL: "https://script.google.com/macros/s/AKfycbw5qnLfoRebzDEdkuAEnGtEBFdMK7LtLtJc4kiFLF4ewzwUV2LnAjxohwBzej8ao_5g/exec", 
       VOTE_URL: "https://ai-club-yfy9m.ai.studio/",
       LMS_REPLAY_URL: "https://lms.yfy.com/eHRD/"
     };
@@ -278,7 +278,8 @@
     const urlParams = new URLSearchParams(window.location.search);
     const rawUser = urlParams.get('user') || urlParams.get('id') || urlParams.get('emp_id') || "";
     const rawName = urlParams.get('name') || urlParams.get('cname') || "";
-    const currentBatch = urlParams.get('batch') || "9月成果大選推播";
+    const currentBatch = urlParams.get('batch') || "1111_sep_quiz";
+    const currentTopic = urlParams.get('topic') || "9月萌寵社畜盲盒測驗";
     document.getElementById('batchBadge').innerText = `梯次：${currentBatch}`;
 
     const autoIdentifiedBox = document.getElementById('autoIdentifiedBox');
