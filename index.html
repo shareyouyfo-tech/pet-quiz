@@ -71,7 +71,7 @@
           3 題測出主子體質與社畜指數 ＆ 領取短影音搞笑與溫馨配音腳本
         </p>
         <div id="batchBadge" class="mt-2 inline-block text-[11px] px-2.5 py-0.5 rounded-md bg-rose-50 text-rose-700 border border-rose-200 font-medium">
-          識別載入中...
+          梯次：9月萌寵與社畜心聲盲盒
         </div>
       </header>
 
@@ -111,7 +111,7 @@
           </div>
         </div>
 
-        <!-- 模式 A：自動帶入（0 輸入通行 - 這裡會直接秀出名字！） -->
+        <!-- 模式 A：自動帶入（0 輸入通行） -->
         <div id="autoIdentifiedBox" class="hidden bg-emerald-50 p-4 rounded-2xl border border-emerald-300 text-left space-y-1.5 shadow-sm">
           <div class="flex items-center justify-between text-xs font-bold text-emerald-800">
             <span class="flex items-center gap-1.5">
@@ -127,7 +127,7 @@
           </p>
         </div>
 
-        <!-- 模式 B：手動輸入備援（若網址沒帶參數時才會顯示） -->
+        <!-- 模式 B：手動輸入備援 -->
         <div id="manualInputBox" class="hidden bg-white p-3.5 rounded-2xl border border-rose-200 shadow-sm space-y-2 text-left">
           <label for="inputEmpId" class="block text-xs font-bold text-rose-900 flex items-center justify-between">
             <span>🎟️ 請輸入您的姓名：</span>
@@ -236,4 +236,265 @@
 
         <!-- 投票引流主要行動按鈕 -->
         <div class="space-y-2.5 pt-1">
-          <a id="btnRegistrationLink" href="https://ai-club-yfy9m.ai.studio/" target="_blank" class="block w-full text-
+          <a id="btnRegistrationLink" href="https://ai-club-yfy9m.ai.studio/" target="_blank" class="block w-full text-center py-3.5 px-5 rounded-2xl font-black text-sm text-white bg-gradient-to-r from-rose-500 via-pink-600 to-rose-600 hover:opacity-90 shadow-lg shadow-rose-500/25 transition">
+            🗳️ 前往「AI 靈感藝廊」投下關鍵神聖一票（前二名各頒 500 元）↗
+          </a>
+          <a id="btnReplayLink" href="https://lms.yfy.com/eHRD/" target="_blank" class="block w-full text-center py-2.5 px-4 rounded-xl font-medium text-xs text-rose-800 bg-rose-100 hover:bg-rose-200 border border-rose-200 transition">
+            📺 前往 LMS 觀看短片剪輯與生成精華回放 ↗
+          </a>
+        </div>
+
+        <button id="btnRestart" class="w-full text-center py-2 text-xs text-slate-500 hover:text-slate-800 transition">
+          🔄 重新測驗換個玩法
+        </button>
+
+      </section>
+
+      <footer class="mt-6 pt-4 border-t border-slate-200 text-center text-[11px] text-slate-500">
+        AI CLUB 智造所 ‧ 探索生活無限可能 ‧ 人資訓練培育組
+      </footer>
+
+    </div>
+
+  </main>
+
+  <script>
+    const CONFIG = {
+      GAS_ENDPOINT_URL: "https://script.google.com/macros/s/AKfycbx8mTtDh3_HoJmO0uwnO0rjM9aA2RkikTIztZVB7SvB8DR6KHlXUBWYc6VmuQn9XsB1/exec", 
+      VOTE_URL: "https://ai-club-yfy9m.ai.studio/",
+      LMS_REPLAY_URL: "https://lms.yfy.com/eHRD/"
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const rawUser = urlParams.get('user') || "";
+    const rawName = urlParams.get('name') || "";
+    const currentBatch = "1111_sep_quiz";
+    const currentTopic = "9月萌寵社畜盲盒測驗";
+
+    const autoIdentifiedBox = document.getElementById('autoIdentifiedBox');
+    const manualInputBox = document.getElementById('manualInputBox');
+    const autoEmpIdDisplay = document.getElementById('autoEmpIdDisplay');
+    const inputEmpId = document.getElementById('inputEmpId');
+
+    let activeEmail = rawUser.trim();
+    let activeName = "";
+    if (rawName) {
+      try { activeName = decodeURIComponent(rawName).trim(); } catch(e) { activeName = rawName.trim(); }
+    }
+
+    // 判斷是否成功抓取到參數
+    if (activeName || activeEmail) {
+      autoIdentifiedBox.classList.remove('hidden');
+      manualInputBox.classList.add('hidden');
+      autoEmpIdDisplay.innerHTML = `親愛的夥伴：<span class="text-rose-700 font-black text-base">${activeName || activeEmail}</span>`;
+    } else {
+      autoIdentifiedBox.classList.add('hidden');
+      manualInputBox.classList.remove('hidden');
+    }
+
+    function getDisplayName() {
+      if (activeName) return activeName;
+      if (activeEmail) return activeEmail;
+      const manualVal = inputEmpId.value.trim();
+      return manualVal || "研習同仁夥伴";
+    }
+
+    // 自動發送 GAS 記錄
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        const fullParams = window.location.search + (window.location.search ? '&' : '?') + `batch=${encodeURIComponent(currentBatch)}&topic=${encodeURIComponent(currentTopic)}`;
+        const trackingUrl = CONFIG.GAS_ENDPOINT_URL + fullParams;
+        fetch(trackingUrl)
+          .then(res => res.text())
+          .then(data => console.log("Google 試算表打卡記錄成功:", data))
+          .catch(err => console.error("打卡傳送失敗:", err));
+      } catch (e) {
+        console.error("自動追蹤異常:", e);
+      }
+    });
+
+    const quizQuestions = [
+      {
+        question: "1. 每天下班回家開門，你最希望毛孩的反應是？",
+        options: [
+          { label: "A. 給我大大的擁抱跟療癒眼神，瞬間消除社畜疲勞", type: "HEAL" },
+          { label: "B. 擺出一副『你終於回來了，還不快放飯』的傲嬌臉", type: "FUNNY" }
+        ]
+      },
+      {
+        question: "2. 當你在辦公室加班到深夜，腦中浮現的第一個念頭是？",
+        options: [
+          { label: "A. 好想趕快回家吸貓吸狗，主子一定在等我暖心陪伴", type: "HEAL" },
+          { label: "B. 眼神死，覺得自己才是家裡地位最低的社畜奴才", type: "FUNNY" }
+        ]
+      },
+      {
+        question: "3. 如果要幫毛孩剪輯一支 15 秒短影音，你最喜歡的風格是？",
+        options: [
+          { label: "A. 爆笑迷因對話，把主子厭世表情配上毒舌職場 OS", type: "FUNNY" },
+          { label: "B. 溫馨微光日常，配上感動人心的治癒系告白旁白", type: "HEAL" }
+        ]
+      }
+    ];
+
+    const quizPersonas = {
+      HEAL: {
+        emoji: "🥰",
+        title: "溫暖記錄者 ‧ 治癒系天使",
+        tag: "療癒天使控",
+        desc: "毛孩是你治癒一切職場疲憊的特效藥！你深知毛孩的每個呼吸都在默默守護著你。運用 AI 多模態辨識，能把那些微小但深刻的瞬間轉化為動人的微光影像手帳。",
+        protip: "課堂秘訣：上傳毛孩照片給 AI 時，加上『請以溫柔抒情的視角，描寫牠凝視主人的眼神細節』，文案質感瞬間提升！",
+        prompts: [
+          {
+            title: "【技法① 溫柔心聲】",
+            subtitle: "解讀寵物深情凝視的內心告白",
+            text: "（上傳寵物照片）請擔任這隻毛孩的溫柔小天使。請觀察照片中牠的眼神與坐姿：\n1. 解讀牠眼中對主人最純粹的一句告白。\n2. 寫出 3 句溫柔又融化人心的短片旁白字幕。\n3. 給辛苦工作一整天的主人一句暖心的安慰語錄。"
+          },
+          {
+            title: "【技法② 日常手帳】",
+            subtitle: "生活感短影音文案生成",
+            text: "請為一段 15 秒的寵物打瞌睡日常短片撰寫旁白。場景：午後陽光灑在客廳地板上，毛孩蜷縮著舒服入睡。請用舒緩、詩意的筆觸，寫出 2 句短字幕與 1 個適合搭配的暖心 Hashtag。"
+          },
+          {
+            title: "【技法③ 治癒系金句】",
+            subtitle: "生成社群療癒圖卡配文",
+            text: "請以『在所有疲倦的日常裡，你是我唯一的治癒』為核心概念，產出 3 段適合 Instagram 圖卡的高質感文案，每段 50 字以內，語氣溫暖細膩。"
+          }
+        ]
+      },
+      FUNNY: {
+        emoji: "😹",
+        title: "爆笑翻譯官 ‧ 喜劇大師",
+        tag: "傲嬌主子控",
+        desc: "你家的毛孩就是天生的喜劇演員！在牠們高冷、厭世或鄙視的眼神背後，隱藏著無數超有梗的職場社畜 OS。善用 AI 能精準把這些表情轉化為爆笑金句！",
+        protip: "課堂秘訣：出題給 AI 時指定『請用傲嬌毒舌的總裁語氣』，產出的短片字幕既犀利又爆笑，點擊率立刻翻倍！",
+        prompts: [
+          {
+            title: "【技法① 毒舌診斷】",
+            subtitle: "微表情嫌棄指數與霸氣 OS",
+            text: "（上傳寵物表情照）請擔任這隻寵物的毒舌心聲翻譯官：\n1. 診斷牠當下對奴才的嫌棄指數與真實內心算計。\n2. 寫出 3 句超自戀、傲嬌的內心獨白字幕。\n3. 給奴才 1 個求生建議與放飯守則。"
+          },
+          {
+            title: "【技法② 社畜共鳴】",
+            subtitle: "職場週一病短片迷因腳本",
+            text: "請以『毛孩模仿社畜週一上班的厭世模樣』為題，企劃一支 15 秒短影音腳本，包含畫面分鏡與爆笑字幕建議。"
+          },
+          {
+            title: "【技法③ 迷因圖卡】",
+            subtitle: "辦公室毒舌貼圖文案",
+            text: "請根據貓狗翻白眼或不屑表情，生成 5 句適合用在辦公室同仁交流的幽默毒舌迷因對白。"
+          }
+        ]
+      }
+    };
+
+    let currentStep = 0;
+    let scores = { HEAL: 0, FUNNY: 0 };
+    let activePersonaKey = "HEAL";
+    let activeTabIndex = 0;
+
+    const screenIntro = document.getElementById('screenIntro');
+    const screenQuiz = document.getElementById('screenQuiz');
+    const screenResult = document.getElementById('screenResult');
+
+    document.getElementById('btnStart').addEventListener('click', () => {
+      const nameToCheck = getDisplayName();
+      if (!activeName && !activeEmail && nameToCheck === "研習同仁夥伴") {
+        document.getElementById('idError').classList.remove('hidden');
+        return;
+      }
+      screenIntro.classList.add('hidden');
+      screenQuiz.classList.remove('hidden');
+      renderQuestion();
+    });
+
+    function renderQuestion() {
+      const q = quizQuestions[currentStep];
+      document.getElementById('questionStep').innerText = `QUESTION ${currentStep + 1} / ${quizQuestions.length}`;
+      document.getElementById('questionText').innerText = q.question;
+      document.getElementById('progressBar').style.width = `${((currentStep + 1) / quizQuestions.length) * 100}%`;
+
+      const container = document.getElementById('optionsContainer');
+      container.innerHTML = "";
+
+      q.options.forEach((opt) => {
+        const btn = document.createElement('button');
+        btn.className = "quiz-option w-full text-left p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200 text-slate-800 text-xs sm:text-sm font-medium hover:text-rose-700 flex items-center justify-between shadow-sm";
+        btn.innerHTML = `<span>${opt.label}</span><span class="text-rose-500 font-bold ml-2">→</span>`;
+        btn.onclick = () => selectOption(opt.type);
+        container.appendChild(btn);
+      });
+    }
+
+    function selectOption(type) {
+      scores[type] = (scores[type] || 0) + 1;
+      currentStep++;
+      if (currentStep < quizQuestions.length) {
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      screenQuiz.classList.add('hidden');
+      screenResult.classList.remove('hidden');
+
+      activePersonaKey = scores.HEAL >= scores.FUNNY ? "HEAL" : "FUNNY";
+      const res = quizPersonas[activePersonaKey];
+
+      document.getElementById('resEmoji').innerText = res.emoji;
+      document.getElementById('resTag').innerText = res.tag;
+      document.getElementById('resTitle').innerText = res.title;
+      document.getElementById('resDesc').innerText = res.desc;
+      document.getElementById('resProTip').innerText = res.protip;
+      document.getElementById('resOwnerBadge').innerText = `報告持有人：${getDisplayName()}`;
+
+      switchTab(0);
+      try { confetti({ particleCount: 70, spread: 80, origin: { y: 0.6 } }); } catch (e) {}
+    }
+
+    window.switchTab = function(index) {
+      activeTabIndex = index;
+      const persona = quizPersonas[activePersonaKey];
+      const promptObj = persona.prompts[index];
+
+      [0, 1, 2].forEach(i => {
+        const btn = document.getElementById(`tab${i}`);
+        if (i === index) {
+          btn.classList.add('active');
+          btn.classList.remove('text-slate-600');
+        } else {
+          btn.classList.remove('active');
+          btn.classList.add('text-slate-600');
+        }
+      });
+
+      document.getElementById('tabSubtitle').innerText = `${promptObj.title} ${promptObj.subtitle}`;
+      document.getElementById('resPromptBox').innerText = promptObj.text;
+    };
+
+    document.getElementById('btnCopyPrompt').addEventListener('click', () => {
+      const text = document.getElementById('resPromptBox').innerText;
+      const copyArea = document.createElement('textarea');
+      copyArea.value = text;
+      document.body.appendChild(copyArea);
+      copyArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(copyArea);
+
+      const btnText = document.getElementById('copyBtnText');
+      btnText.innerText = "已複製當前咒語！";
+      setTimeout(() => { btnText.innerText = "一鍵複製當前咒語"; }, 2000);
+    });
+
+    document.getElementById('btnRestart').addEventListener('click', () => {
+      currentStep = 0;
+      scores = { HEAL: 0, FUNNY: 0 };
+      screenResult.classList.add('hidden');
+      screenQuiz.classList.remove('hidden');
+      renderQuestion();
+    });
+  </script>
+</body>
+</html>
