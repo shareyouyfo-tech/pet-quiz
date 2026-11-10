@@ -2,498 +2,205 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI CLUB ｜ 9月萌寵與社畜心聲・命定盲盒與短片腳本錦囊</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <!-- Canvas Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-  <style>
-    body {
-      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-      background: linear-gradient(165deg, #e11d48 0%, #fb7185 35%, #fecdd3 70%, #fef3c7 100%);
-      min-height: 100vh;
-      color: #0f172a;
-    }
-    .sunlight-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      box-shadow: 0 25px 50px -12px rgba(225, 29, 72, 0.25);
-    }
-    .quiz-option {
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .quiz-option:hover {
-      transform: translateY(-2px);
-      border-color: #e11d48;
-      background: #fff1f2;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-7px) rotate(1deg); }
-    }
-    .floating-box {
-      animation: float 3.5s ease-in-out infinite;
-    }
-    .tab-btn.active {
-      background: linear-gradient(90deg, #e11d48, #f43f5e);
-      color: #ffffff;
-      border-color: transparent;
-      font-weight: 700;
-    }
-  </style>
+  <title>【心理測驗】你家主子在想什麼？30秒測出社畜共鳴指數，開箱 AI 毒舌配音神包！</title>
 </head>
-<body class="flex items-center justify-center p-3 sm:p-6 md:p-8">
-
-  <main class="w-full max-w-2xl mx-auto sunlight-card rounded-3xl overflow-hidden relative my-4">
-    
-    <div class="absolute -top-20 -left-20 w-56 h-56 bg-rose-300/40 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-20 -right-20 w-56 h-56 bg-amber-300/40 rounded-full blur-3xl pointer-events-none"></div>
-
-    <div class="p-5 sm:p-8 space-y-5 relative z-10">
-
-      
-
-
-      <!-- Header 標題區 -->
-      <header class="text-center mb-2">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase bg-rose-100 text-rose-800 border border-rose-300 mb-2">
-          <span>🐾</span> AI Club ‧ 9月強檔成果大選
-        </div>
-        <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">
-          萌寵與社畜心聲 ‧ 命定盲盒
-        </h1>
-        <p class="text-slate-600 text-xs sm:text-sm mt-1">
-          3 題測出主子體質與社畜指數 ＆ 領取短影音搞笑與溫馨配音腳本
-        </p>
-        <div id="batchBadge" class="mt-2 inline-block text-[11px] px-2.5 py-0.5 rounded-md bg-rose-50 text-rose-700 border border-rose-200 font-medium">
-          識別載入中...
-        </div>
-      </header>
-
-      <!-- SECTION 1: 測驗首頁與身分判定 -->
-      <section id="screenIntro" class="text-center space-y-5">
-        
-        <div class="floating-box my-1">
-          <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-2xl bg-gradient-to-tr from-rose-500 via-pink-400 to-amber-300 p-1 shadow-md shadow-rose-400/25 flex items-center justify-center">
-            <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center text-3xl sm:text-4xl shadow-inner">
-              🐱
-            </div>
-          </div>
-        </div>
-        
-        <!-- 學習亮點整理卡 -->
-        <div class="bg-rose-50/70 rounded-2xl p-4 border border-rose-100 text-slate-700 text-xs sm:text-sm leading-relaxed text-left space-y-2">
-          <p class="flex items-center gap-2 font-bold text-rose-950 text-sm">
-            <span>✨</span> 9月成果大選亮點 ＆ 盲盒解鎖內容：
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-            <div class="bg-white p-2.5 rounded-xl border border-rose-100 shadow-sm">
-              <span class="font-bold text-rose-700">① 毛孩社畜 DNA</span>
-              <p class="text-slate-500 mt-0.5">診斷當前疲勞值與萌寵治癒指數</p>
-            </div>
-            <div class="bg-white p-2.5 rounded-xl border border-rose-100 shadow-sm">
-              <span class="font-bold text-amber-600">② 3 組短影音提詞</span>
-              <p class="text-slate-500 mt-0.5">主子微表情解讀、毒舌OS、療癒字幕</p>
-            </div>
-            <div class="bg-white p-2.5 rounded-xl border border-rose-100 shadow-sm">
-              <span class="font-bold text-indigo-600">③ 雙軌作品投票</span>
-              <p class="text-slate-500 mt-0.5">花 1 分鐘選出前二名各頒 500 元</p>
-            </div>
-            <div class="bg-white p-2.5 rounded-xl border border-rose-100 shadow-sm">
-              <span class="font-bold text-emerald-600">④ 直通年度總決賽</span>
-              <p class="text-slate-500 mt-0.5">人氣神作取得角逐 5,000 元門票</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 模式 A：自動帶入（0 輸入通行） -->
-        <div id="autoIdentifiedBox" class="hidden bg-emerald-50 p-4 rounded-2xl border border-emerald-300 text-left space-y-1.5 shadow-sm">
-          <div class="flex items-center justify-between text-xs font-bold text-emerald-800">
-            <span class="flex items-center gap-1.5">
-              <span>🎫</span> 研習身分已由信件自動就緒
-            </span>
-            <span class="text-[10px] bg-emerald-200/60 text-emerald-900 px-2 py-0.5 rounded-md border border-emerald-400">免手動輸入</span>
-          </div>
-          <p class="text-slate-900 text-sm font-bold flex items-center gap-2" id="autoEmpIdDisplay">
-            持有人：載入中...
-          </p>
-          <p class="text-[11px] text-slate-600">
-            系統已綁定您的專屬研習身分，完成 3 題即可解鎖專屬盲盒並前往投票！
-          </p>
-        </div>
-
-        <!-- 模式 B：手動輸入備援 -->
-        <div id="manualInputBox" class="bg-white p-3.5 rounded-2xl border border-rose-200 shadow-sm space-y-2 text-left">
-          <label for="inputEmpId" class="block text-xs font-bold text-rose-900 flex items-center justify-between">
-            <span>🎟️ 請輸入姓名、工號或公司英文帳號：</span>
-            <span id="savedTag" class="hidden text-[10px] text-emerald-600 font-normal">已自動記住</span>
-          </label>
-          <input 
-            type="text" 
-            id="inputEmpId" 
-            placeholder="例如：王大明 或 ming.wang（不需填 @yfy.com）" 
-            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-rose-500 focus:bg-white transition"
-          />
-          <div class="space-y-1 text-[11px] pt-0.5">
-            <div class="flex items-center justify-between text-slate-500">
-              <span>※ 英文帳號填寫信箱前綴即可（例如 ming.wang@yfy.com 請填 ming.wang）</span>
-              <span id="idError" class="hidden text-rose-600 font-bold">請填寫姓名、工號或帳號！</span>
-            </div>
-            <div class="text-slate-400 text-[10px]">
-              ※ 用於客製盲盒卡與投票紀錄核對
-            </div>
-          </div>
-        </div>
-
-        <button id="btnStart" class="w-full py-3.5 px-6 rounded-2xl font-black text-base text-white bg-gradient-to-r from-rose-500 via-pink-600 to-rose-700 hover:opacity-95 shadow-lg shadow-rose-500/25 transition duration-200">
-          解鎖命定盲盒 ＆ 領取專屬錦囊（約 30 秒）👉
-        </button>
-      </section>
-
-      <!-- SECTION 2: 測驗題目頁 -->
-      <section id="screenQuiz" class="hidden space-y-5">
-        <div class="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
-          <div id="progressBar" class="bg-gradient-to-r from-rose-500 to-pink-600 h-2 rounded-full transition-all duration-300" style="width: 33%"></div>
-        </div>
-
-        <div class="flex items-center justify-between text-xs text-rose-800 font-bold">
-          <span id="questionStep">QUESTION 1 / 3</span>
-          <span>AI 萌寵心聲演算中...</span>
-        </div>
-
-        <div class="bg-rose-50/80 rounded-2xl p-4 sm:p-5 border border-rose-100 shadow-sm">
-          <h2 id="questionText" class="text-base sm:text-lg font-bold text-slate-900 leading-snug">
-            題目載入中...
-          </h2>
-        </div>
-
-        <div class="space-y-3" id="optionsContainer"></div>
-      </section>
-
-      <!-- SECTION 3: 測驗結果與深度學習錦囊頁 -->
-      <section id="screenResult" class="hidden space-y-5">
-        
-        <div class="bg-gradient-to-b from-rose-50 to-white border border-rose-200 rounded-2xl p-5 sm:p-6 text-center space-y-3 relative overflow-hidden shadow-sm">
-          <div class="text-5xl my-1" id="resEmoji">🥰</div>
+<body style="margin: 0; padding: 0; background-color: #fff1f2; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#fff1f2" style="table-layout: fixed; background-color: #fff1f2; padding: 30px 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+    <tr>
+      <td align="center" style="font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+        <!-- 主卡片容器 (600px 寬度) -->
+        <table border="0" cellpadding="0" cellspacing="0" width="600" bgcolor="#ffffff" style="background-color: #ffffff; border-radius: 16px; border: 1px solid #fda4af; width: 600px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif; overflow: hidden;">
           
-          <div class="inline-block text-xs font-black uppercase tracking-wider text-rose-800 bg-rose-100 px-3 py-1 rounded-full border border-rose-300" id="resTag">
-            萌寵與社畜心聲解析
-          </div>
+          <!-- 頂部 Header -->
+          <tr>
+            <td align="center" bgcolor="#e11d48" style="background-color: #e11d48; padding: 36px 24px 32px 24px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+              <!-- 頂部膠囊標籤 (Word 絕對垂直置中版) -->
+              <table border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto 14px auto;">
+                <tr>
+                  <td align="center" valign="middle" bgcolor="#be123c" height="26" style="background-color: #be123c; border-radius: 13px; padding: 0 16px; height: 26px; line-height: 26px; mso-line-height-rule: exactly; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                    <span style="font-size: 12px; font-weight: bold; color: #ffffff; line-height: 26px; display: inline-block; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">🐾 AI CLUB ‧ 互動心理測驗盲盒</span>
+                  </td>
+                </tr>
+              </table>
 
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-900" id="resTitle">
-            溫暖記錄者 ‧ 治癒系天使
-          </h2>
+              <h1 style="margin: 0 0 8px 0; font-size: 24px; font-weight: bold; color: #ffffff; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif; line-height: 1.3;">
+                主子心聲大解密 ‧ 社畜指數測驗
+              </h1>
+              <p style="margin: 0; font-size: 13px; color: #f8fafc; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif; line-height: 1.5;">
+                毛孩是療癒天使還是鄙視總裁？3 題測出隱藏體質 💖 解鎖 AI 實戰腳本
+              </p>
+            </td>
+          </tr>
 
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed text-left bg-white p-3.5 rounded-xl border border-rose-100 shadow-inner" id="resDesc">
-            性格描述載入中...
-          </p>
+          <!-- 內容主體 -->
+          <tr>
+            <td style="padding: 30px 32px 26px 32px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+              
+              <!-- 個人化問候 (Word 郵件合併列印專用) -->
+              <p style="font-size: 16px; color: #0f172a; margin: 0 0 16px 0; line-height: 1.6; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                親愛的 <strong style="font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif; color: #e11d48;">«員工姓名»</strong> 同仁 您好：
+              </p>
+              
+              <p style="font-size: 14px; color: #334155; margin: 0 0 16px 0; line-height: 1.7; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                在辦公室忙碌了一整天，下班開門那一刻，你家毛孩迎面而來的微表情到底是在說「辛苦了想抱抱」，還是傲嬌表示「奴才，我的罐罐呢」？
+              </p>
 
-          <div class="flex flex-wrap items-center justify-between text-[11px] text-rose-800 pt-1 border-t border-rose-100">
-            <span id="resOwnerBadge">報告持有人：-</span>
-            <span class="text-slate-500">認證：YFY AI CLUB 9月成果大選</span>
-          </div>
-        </div>
+              <p style="font-size: 14px; color: #334155; margin: 0 0 20px 0; line-height: 1.7; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                AI Club 特別打造 30 秒「<strong>主子心聲 ＆ 社畜共鳴盲盒</strong>」，為您揭曉家中主子的真實人設，並附贈一鍵複製的「短影音爆笑旁白 Prompt」！測驗完成後還能直接欣賞入選同仁的幽默神片，投下決定 500 元人氣獎的關鍵一票！
+              </p>
 
-        <!-- 三大實戰錦囊 -->
-        <div class="bg-white border border-rose-200 rounded-2xl p-4 sm:p-5 text-left space-y-3 shadow-sm">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
-            <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-rose-900">
-              <span>🪄</span> 短影音配音提詞庫（點擊一鍵複製）
-            </div>
-            <button id="btnCopyPrompt" class="text-xs bg-rose-600 hover:bg-rose-500 text-white px-3 py-1.5 rounded-lg transition duration-150 flex items-center gap-1 shadow-sm font-bold">
-              <span>📋</span> <span id="copyBtnText">一鍵複製當前咒語</span>
-            </button>
-          </div>
+              <!-- 三大教學亮點卡片 (單欄排版不折字) -->
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#fff1f2" style="background-color: #fff1f2; border-radius: 12px; border: 1px solid #fda4af; margin-bottom: 22px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                <tr>
+                  <td style="padding: 16px 20px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                    <p style="font-size: 13px; font-weight: bold; color: #e11d48; margin: 0 0 10px 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                      ✨ 開啟盲盒！帶走三大 AI 實戰教學錦囊：
+                    </p>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tr>
+                        <td style="font-size: 13px; color: #be123c; padding: 4px 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                          <strong>① 微表情辨識提詞：</strong>上傳眼神照，AI 秒診斷嫌棄與愛意指數
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size: 13px; color: #b45309; padding: 4px 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                          <strong>② 15秒快節奏對白：</strong>精準生成 IG/Reels 爆款職場配音字幕
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size: 13px; color: #4338ca; padding: 4px 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                          <strong>③ 投神作搶前二名：</strong>人氣神片各頒 500 元並直通年終總決賽
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
 
-          <div class="flex gap-2">
-            <button onclick="switchTab(0)" id="tab0" class="tab-btn active text-xs px-3 py-1.5 rounded-lg border border-slate-200 transition">
-              ① 眼神心聲解讀
-            </button>
-            <button onclick="switchTab(1)" id="tab1" class="tab-btn text-xs px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 transition">
-              ② 毒舌對白腳本
-            </button>
-            <button onclick="switchTab(2)" id="tab2" class="tab-btn text-xs px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 transition">
-              ③ 溫暖陪伴旁白
-            </button>
-          </div>
+              <!-- 專屬 0 秒免輸入按鈕 (精巧高度) -->
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 20px 0 16px 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                <tr>
+                  <td align="center" style="font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td align="center" bgcolor="#e11d48" style="background-color: #e11d48; border-radius: 8px; padding: 8px 24px; height: 38px; line-height: 20px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                          <a href="https://shareyouyfo-tech.github.io/pet-quiz/?user=«員工工號»&name=«員工姓名»&batch=1111_sep_quiz" target="_blank" style="font-size: 15px; font-weight: bold; color: #ffffff; text-decoration: none; display: inline-block; line-height: 20px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                            🐾 30 秒測毛孩與社畜心聲 ＆ 領配音錦囊👉
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                    <p style="font-size: 11px; color: #059669; margin: 8px 0 0 0; font-weight: bold; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                      🎫 專屬連結已綁定您的同仁研習身分，點擊即可 0 秒通行免手動輸入！
+                    </p>
+                  </td>
+                </tr>
+              </table>
 
-          <div class="relative">
-            <div class="text-[11px] text-rose-700 font-bold mb-1" id="tabSubtitle">
-              【技法說明】：利用多模態視覺辨識動物微表情，生成高共鳴旁白
-            </div>
-            <pre class="text-xs text-slate-800 leading-relaxed font-mono bg-slate-50 p-3 rounded-xl border border-slate-200 whitespace-pre-wrap break-words" id="resPromptBox">
-載入中...
-            </pre>
-          </div>
+              <!-- 雙軌快速通道 -->
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 22px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                <tr>
+                  <td width="50%" style="padding-right: 6px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#fff1f2" style="background-color: #fff1f2; border: 1px solid #fda4af; border-radius: 8px;">
+                      <tr>
+                        <td align="center" style="padding: 9px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                          <a href="https://ai-club-yfy9m.ai.studio/" target="_blank" style="color: #e11d48; font-size: 12px; font-weight: bold; text-decoration: none; display: block; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                            🗳️ 前往「AI 靈感藝廊」大選投票
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td width="50%" style="padding-left: 6px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f1f5f9" style="background-color: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px;">
+                      <tr>
+                        <td align="center" style="padding: 9px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                          <a href="https://lms.yfy.com/eHRD/" target="_blank" style="color: #475569; font-size: 12px; font-weight: bold; text-decoration: none; display: block; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                            📺 登入 LMS 觀看短片剪輯回放
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
 
-          <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-[11px] text-amber-950 space-y-1">
-            <div class="font-bold flex items-center gap-1 text-amber-800">
-              <span>💡</span> 課堂私房秘訣：
-            </div>
-            <p id="resProTip">
-              「直接上傳寵物照片給 AI，要求『先診斷眼神微表情，再以第一人稱寫出 15 秒快節奏台詞』，幽默感立即翻倍！」
-            </p>
-          </div>
-        </div>
+              <!-- AI Club 跨檔期進行中任務模組 -->
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f8fafc" style="background-color: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                <tr>
+                  <td style="padding: 16px 18px; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                    <p style="font-size: 13px; font-weight: bold; color: #0f172a; margin: 0 0 10px 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                      🔥【AI Club 跨檔期進行中任務】（花你 1 分鐘，收穫滿滿）：
+                    </p>
+                    <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed #e2e8f0;">
+                      <p style="font-size: 12px; color: #e11d48; font-weight: bold; margin: 0 0 3px 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                        【成果大選・投一票】 <span style="font-size: 11px; color: #64748b; font-weight: normal; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">(至 11/20 18:00 止)</span>
+                      </p>
+                      <p style="font-size: 12px; color: #475569; margin: 0 0 3px 0; line-height: 1.4; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                        九月「萌寵映畫誌」超萌作品火熱票選中！選出人氣前二名各頒發 500 元！
+                      </p>
+                      <p style="font-size: 12px; margin: 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                        👉 <a href="https://ai-club-yfy9m.ai.studio/" target="_blank" style="color: #0284c7; font-weight: bold; text-decoration: underline;">前往「AI 靈感藝廊」大選投票</a>
+                      </p>
+                    </div>
+                    <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed #e2e8f0;">
+                      <p style="font-size: 12px; color: #7c3aed; font-weight: bold; margin: 0 0 3px 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                        【曬圖卡・拿五百】 <span style="font-size: 11px; color: #64748b; font-weight: normal; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">(至 11/20 18:00 止)</span>
+                      </p>
+                      <p style="font-size: 12px; color: #475569; margin: 0 0 3px 0; line-height: 1.4; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                        十月「旅遊管家」LMS 精華回放中，上傳旅遊攻略資訊圖卡搶 500 元與總決賽門票！
+                      </p>
+                      <p style="font-size: 12px; margin: 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                        👉 <a href="https://sites.google.com/view/yfy-ai-club" target="_blank" style="color: #0284c7; font-weight: bold; text-decoration: underline;">前往十月「智慧旅遊攻略」社團投稿</a> | <a href="https://lms.yfy.com/eHRD/" target="_blank" style="color: #475569; font-weight: bold; text-decoration: underline;">登入 LMS 觀看回放</a>
+                      </p>
+                    </div>
+                    <div>
+                      <p style="font-size: 12px; color: #d97706; font-weight: bold; margin: 0 0 3px 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                        【十一月專講・揪團學】 <span style="font-size: 11px; color: #64748b; font-weight: normal; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">(11/20 15:30 開講)</span>
+                      </p>
+                      <p style="font-size: 12px; color: #475569; margin: 0 0 3px 0; line-height: 1.4; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                        黃揚博老師帶您打造 AI 生活儀式感！號召同仁上線前三名獨享專屬禮物卡！
+                      </p>
+                      <p style="font-size: 12px; margin: 0; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+                        👉 <a href="https://forms.gle/JLWoUahV66WyCRcw9" target="_blank" style="color: #d97706; font-weight: bold; text-decoration: underline;">立即登記報名十一月專講</a>
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+              </table>
 
-        <!-- 投票引流主要行動按鈕 -->
-        <div class="space-y-2.5 pt-1">
-          <a id="btnRegistrationLink" href="https://ai-club-yfy9m.ai.studio/" target="_blank" class="block w-full text-center py-3.5 px-5 rounded-2xl font-black text-sm text-white bg-gradient-to-r from-rose-500 via-pink-600 to-rose-600 hover:opacity-90 shadow-lg shadow-rose-500/25 transition">
-            🗳️ 前往「AI 靈感藝廊」投下關鍵神聖一票（前二名各頒 500 元）↗
-          </a>
-          <a id="btnReplayLink" href="https://lms.yfy.com/eHRD/" target="_blank" class="block w-full text-center py-2.5 px-4 rounded-xl font-medium text-xs text-rose-800 bg-rose-100 hover:bg-rose-200 border border-rose-200 transition">
-            📺 前往 LMS 觀看短片剪輯與生成精華回放 ↗
-          </a>
-        </div>
+            </td>
+          </tr>
 
-        <button id="btnRestart" class="w-full text-center py-2 text-xs text-slate-500 hover:text-slate-800 transition">
-          🔄 重新測驗換個玩法
-        </button>
+          <!-- 頁尾落款 -->
+          <tr>
+            <td align="center" bgcolor="#f8fafc" style="background-color: #f8fafc; padding: 14px; border-top: 1px solid #e2e8f0; font-size: 11px; color: #64748b; font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;">
+              永豐餘 YFY AI Club ‧ 人資訓練培育組 敬啟
+            </td>
+          </tr>
 
-      </section>
+        </table>
+      </td>
+    </tr>
+  </table>
 
-      <footer class="mt-6 pt-4 border-t border-slate-200 text-center text-[11px] text-slate-500">
-        AI CLUB 智造所 ‧ 探索生活無限可能 ‧ 人資訓練培育組
-      </footer>
-
-    </div>
-
-  </main>
-
+  <!-- 🟢 自動抓取網址參數並發送記錄到 Google 試算表的追蹤腳本 -->
   <script>
-    const CONFIG = {
-      GAS_ENDPOINT_URL: "https://script.google.com/macros/s/AKfycbw5qnLfoRebzDEdkuAEnGtEBFdMK7LtLtJc4kiFLF4ewzwUV2LnAjxohwBzej8ao_5g/exec", 
-      VOTE_URL: "https://ai-club-yfy9m.ai.studio/",
-      LMS_REPLAY_URL: "https://lms.yfy.com/eHRD/"
-    };
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const rawUser = urlParams.get('user') || urlParams.get('id') || urlParams.get('emp_id') || "";
-    const rawName = urlParams.get('name') || urlParams.get('cname') || "";
-    const currentBatch = urlParams.get('batch') || "1111_sep_quiz";
-    const currentTopic = urlParams.get('topic') || "9月萌寵社畜盲盒測驗";
-    document.getElementById('batchBadge').innerText = `梯次：${currentBatch}`;
-
-    const autoIdentifiedBox = document.getElementById('autoIdentifiedBox');
-    const manualInputBox = document.getElementById('manualInputBox');
-    const autoEmpIdDisplay = document.getElementById('autoEmpIdDisplay');
-    const inputEmpId = document.getElementById('inputEmpId');
-
-    let activeEmpId = rawUser.trim();
-    let activeEmpName = "";
-    if (rawName) {
-      try { activeEmpName = decodeURIComponent(rawName).trim(); } catch(e) { activeEmpName = rawName.trim(); }
-    }
-
-    if (activeEmpName) {
-      autoIdentifiedBox.classList.remove('hidden');
-      manualInputBox.classList.add('hidden');
-      autoEmpIdDisplay.innerHTML = `持有人：<span class="text-rose-700 font-black text-base">${activeEmpName}</span>`;
-    } else if (activeEmpId) {
-      autoIdentifiedBox.classList.remove('hidden');
-      manualInputBox.classList.add('hidden');
-      autoEmpIdDisplay.innerHTML = `持有人：<span class="text-rose-700 font-black text-base">${activeEmpId}</span>`;
-    }
-
-    function getDisplayName() {
-      if (activeEmpName) return activeEmpName;
-      if (activeEmpId) return activeEmpId;
-      return "研習同仁夥伴";
-    }
-
-    const quizQuestions = [
-      {
-        question: "1. 每天下班回家開門，你最希望毛孩的反應是？",
-        options: [
-          { label: "A. 給我大大的擁抱跟療癒眼神，瞬間消除社畜疲勞", type: "HEAL" },
-          { label: "B. 擺出一副『你終於回來了，還不快放飯』的傲嬌臉", type: "FUNNY" }
-        ]
-      },
-      {
-        question: "2. 當你在辦公室加班到深夜，腦中浮現的第一個念頭是？",
-        options: [
-          { label: "A. 好想趕快回家吸貓吸狗，主子一定在等我暖心陪伴", type: "HEAL" },
-          { label: "B. 眼神死，覺得自己才是家裡地位最低的社畜奴才", type: "FUNNY" }
-        ]
-      },
-      {
-        question: "3. 如果要幫毛孩剪輯一支 15 秒短影音，你最喜歡的風格是？",
-        options: [
-          { label: "A. 爆笑迷因對話，把主子厭世表情配上毒舌職場 OS", type: "FUNNY" },
-          { label: "B. 溫馨微光日常，配上感動人心的治癒系告白旁白", type: "HEAL" }
-        ]
-      }
-    ];
-
-    const quizPersonas = {
-      HEAL: {
-        emoji: "🥰",
-        title: "溫暖記錄者 ‧ 治癒系天使",
-        tag: "療癒天使控",
-        desc: "毛孩是你治癒一切職場疲憊的特效藥！你深知毛孩的每個呼吸都在默默守護著你。運用 AI 多模態辨識，能把那些微小但深刻的瞬間轉化為動人的微光影像手帳。",
-        protip: "課堂秘訣：上傳毛孩照片給 AI 時，加上『請以溫柔抒情的視角，描寫牠凝視主人的眼神細節』，文案質感瞬間提升！",
-        prompts: [
-          {
-            title: "【技法① 溫柔心聲】",
-            subtitle: "解讀寵物深情凝視的內心告白",
-            text: "「（上傳寵物照片）請擔任這隻毛孩的溫柔小天使。請觀察照片中牠的眼神與坐姿：\n1. 解讀牠眼中對主人最純粹的一句告白。\n2. 寫出 3 句溫柔又融化人心的短片旁白字幕（適合配慢速抒情配樂）。\n3. 給辛苦工作一整天的主人一句暖心的安慰語錄。」"
-          },
-          {
-            title: "【技法② 日常手帳】",
-            subtitle: "生活感短影音文案生成",
-            text: "「請為一段 15 秒的寵物打瞌睡日常短片撰寫旁白。場景：午後陽光灑在客廳地板上，毛孩蜷縮著舒服入睡。請用舒緩、詩意的筆觸，寫出 2 句短字幕與 1 個適合搭配的暖心 Hashtag。」"
-          },
-          {
-            title: "【技法③ 治癒系金句】",
-            subtitle: "生成社群療癒圖卡配文",
-            text: "「請以『在所有疲倦的日常裡，你是我唯一的治癒』為核心概念，產出 3 段適合 Instagram 圖卡的高質感文案，每段 50 字以內，語氣溫暖細膩。」"
-          }
-        ]
-      },
-      FUNNY: {
-        emoji: "😹",
-        title: "爆笑翻譯官 ‧ 喜劇大師",
-        tag: "傲嬌主子控",
-        desc: "你家的毛孩就是天生的喜劇演員！在牠們高冷、厭世或鄙視的眼神背後，隱藏著無數超有梗的職場社畜 OS。善用 AI 能精準把這些表情轉化為爆笑金句！",
-        protip: "課堂秘訣：出題給 AI 時指定『請用傲嬌毒舌的總裁語氣』，產出的短片字幕既犀利又爆笑，點擊率立刻翻倍！",
-        prompts: [
-          {
-            title: "【技法① 毒舌診斷】",
-            subtitle: "微表情嫌棄指數與霸氣 OS",
-            text: "「（上傳寵物表情照）請擔任這隻寵物的毒舌心聲翻譯官：\n1. 診斷牠當下對奴才的嫌棄指數（0~100%）與真實內心算計。\n2. 寫出 3 句超自戀、傲嬌的內心獨白字幕（適合配 15 秒快節奏短片）。\n3. 給奴才 1 個求生建議與放飯守則。」"
-          },
-          {
-            title: "【技法② 社畜共鳴】",
-            subtitle: "職場週一病短片迷因腳本",
-            text: "「請以『毛孩模仿社畜週一上班的厭世模樣』為題，企劃一支 15 秒短影音腳本：\n[畫面1] 眼神呆滯躺平 ➔ 字幕：『靈魂已登出』\n[畫面2] 勉強打起精神 ➔ 字幕：『為了罐罐，我忍』\n[畫面3] 怒瞪鏡頭 ➔ 字幕：『下班時間到了沒？』\n請提供 1 組爆笑音效搭配建議。」"
-          },
-          {
-            title: "【技法③ 迷因圖卡】",
-            subtitle: "辦公室毒舌貼圖文案",
-            text: "「請根據貓狗翻白眼或不屑表情，生成 5 句適合用在辦公室同仁交流的幽默毒舌迷因對白（例如：『這個需求你認真？』、『我的罐罐比你的簡報重要』）。」"
-          }
-        ]
-      }
-    };
-
-    let currentStep = 0;
-    let scores = { HEAL: 0, FUNNY: 0 };
-    let activePersonaKey = "HEAL";
-    let activeTabIndex = 0;
-
-    const screenIntro = document.getElementById('screenIntro');
-    const screenQuiz = document.getElementById('screenQuiz');
-    const screenResult = document.getElementById('screenResult');
-
-    document.getElementById('btnStart').addEventListener('click', () => {
-      if (!activeEmpName && !activeEmpId) {
-        const val = inputEmpId.value.trim();
-        if (!val) {
-          document.getElementById('idError').classList.remove('hidden');
-          return;
+    window.addEventListener('DOMContentLoaded', (event) => {
+      try {
+        const urlParams = window.location.search;
+        if (urlParams) {
+          const standardParams = "&batch=1111_sep_quiz&topic=9月萌寵社畜盲盒測驗";
+          const gasUrl = "https://script.google.com/macros/s/AKfycbx8mTtDh3_HoJmO0uwnO0rjM9aA2RkikTIztZVB7SvB8DR6KHlXUBWYc6VmuQn9XsB1/exec" + urlParams + standardParams;
+          
+          fetch(gasUrl)
+            .then(response => response.text())
+            .then(data => console.log("盲盒紀錄成功:", data))
+            .catch(err => console.error("紀錄發送失敗:", err));
         }
-        document.getElementById('idError').classList.add('hidden');
-        if (/^\d+$/.test(val)) { activeEmpId = val; } else { activeEmpName = val; }
+      } catch (e) {
+        console.error("追蹤腳本執行異常:", e);
       }
-      screenIntro.classList.add('hidden');
-      screenQuiz.classList.remove('hidden');
-      renderQuestion();
-    });
-
-    function renderQuestion() {
-      const q = quizQuestions[currentStep];
-      document.getElementById('questionStep').innerText = `QUESTION ${currentStep + 1} / ${quizQuestions.length}`;
-      document.getElementById('questionText').innerText = q.question;
-      document.getElementById('progressBar').style.width = `${((currentStep + 1) / quizQuestions.length) * 100}%`;
-
-      const container = document.getElementById('optionsContainer');
-      container.innerHTML = "";
-
-      q.options.forEach((opt) => {
-        const btn = document.createElement('button');
-        btn.className = "quiz-option w-full text-left p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200 text-slate-800 text-xs sm:text-sm font-medium hover:text-rose-700 flex items-center justify-between shadow-sm";
-        btn.innerHTML = `<span>${opt.label}</span><span class="text-rose-500 font-bold ml-2">→</span>`;
-        btn.onclick = () => selectOption(opt.type);
-        container.appendChild(btn);
-      });
-    }
-
-    function selectOption(type) {
-      scores[type] = (scores[type] || 0) + 1;
-      currentStep++;
-      if (currentStep < quizQuestions.length) {
-        renderQuestion();
-      } else {
-        showResult();
-      }
-    }
-
-    function showResult() {
-      screenQuiz.classList.add('hidden');
-      screenResult.classList.remove('hidden');
-
-      activePersonaKey = scores.HEAL >= scores.FUNNY ? "HEAL" : "FUNNY";
-      const res = quizPersonas[activePersonaKey];
-
-      document.getElementById('resEmoji').innerText = res.emoji;
-      document.getElementById('resTag').innerText = res.tag;
-      document.getElementById('resTitle').innerText = res.title;
-      document.getElementById('resDesc').innerText = res.desc;
-      document.getElementById('resProTip').innerText = res.protip;
-      document.getElementById('resOwnerBadge').innerText = `報告持有人：${getDisplayName()}`;
-
-      switchTab(0);
-      try { confetti({ particleCount: 70, spread: 80, origin: { y: 0.6 } }); } catch (e) {}
-    }
-
-    window.switchTab = function(index) {
-      activeTabIndex = index;
-      const persona = quizPersonas[activePersonaKey];
-      const promptObj = persona.prompts[index];
-
-      [0, 1, 2].forEach(i => {
-        const btn = document.getElementById(`tab${i}`);
-        if (i === index) {
-          btn.classList.add('active');
-          btn.classList.remove('text-slate-600');
-        } else {
-          btn.classList.remove('active');
-          btn.classList.add('text-slate-600');
-        }
-      });
-
-      document.getElementById('tabSubtitle').innerText = `${promptObj.title} ${promptObj.subtitle}`;
-      document.getElementById('resPromptBox').innerText = promptObj.text;
-    };
-
-    document.getElementById('btnCopyPrompt').addEventListener('click', () => {
-      const text = document.getElementById('resPromptBox').innerText;
-      const copyArea = document.createElement('textarea');
-      copyArea.value = text;
-      document.body.appendChild(copyArea);
-      copyArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(copyArea);
-
-      const btnText = document.getElementById('copyBtnText');
-      btnText.innerText = "已複製當前咒語！";
-      setTimeout(() => { btnText.innerText = "一鍵複製當前咒語"; }, 2000);
-    });
-
-    document.getElementById('btnRestart').addEventListener('click', () => {
-      currentStep = 0;
-      scores = { HEAL: 0, FUNNY: 0 };
-      screenResult.classList.add('hidden');
-      screenQuiz.classList.remove('hidden');
-      renderQuestion();
     });
   </script>
 </body>
