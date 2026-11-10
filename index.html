@@ -282,7 +282,6 @@
       try { activeName = decodeURIComponent(rawName).trim(); } catch(e) { activeName = rawName.trim(); }
     }
 
-    // 判斷是否成功抓取到參數
     if (activeName || activeEmail) {
       autoIdentifiedBox.classList.remove('hidden');
       manualInputBox.classList.add('hidden');
@@ -299,14 +298,14 @@
       return manualVal || "研習同仁夥伴";
     }
 
-    // 自動發送 GAS 記錄
+    // 1. 頁面載入時：發送「造訪記錄」
     window.addEventListener('DOMContentLoaded', () => {
       try {
-        const fullParams = window.location.search + (window.location.search ? '&' : '?') + `batch=${encodeURIComponent(currentBatch)}&topic=${encodeURIComponent(currentTopic)}`;
+        const fullParams = window.location.search + (window.location.search ? '&' : '?') + `batch=${encodeURIComponent(currentBatch)}&topic=${encodeURIComponent(currentTopic)}&action=造訪`;
         const trackingUrl = CONFIG.GAS_ENDPOINT_URL + fullParams;
         fetch(trackingUrl)
           .then(res => res.text())
-          .then(data => console.log("Google 試算表打卡記錄成功:", data))
+          .then(data => console.log("Google 試算表造訪打卡成功:", data))
           .catch(err => console.error("打卡傳送失敗:", err));
       } catch (e) {
         console.error("自動追蹤異常:", e);
@@ -449,6 +448,19 @@
       document.getElementById('resDesc').innerText = res.desc;
       document.getElementById('resProTip').innerText = res.protip;
       document.getElementById('resOwnerBadge').innerText = `報告持有人：${getDisplayName()}`;
+
+      // 2. 測驗完成顯示結果時：自動發送「測驗結果」到試算表
+      try {
+        const userName = encodeURIComponent(getDisplayName());
+        const userEmail = encodeURIComponent(activeEmail);
+        const resultActionUrl = `${CONFIG.GAS_ENDPOINT_URL}?user=${userEmail}&name=${userName}&batch=${encodeURIComponent(currentBatch)}&topic=${encodeURIComponent(currentTopic)}&action=完成測驗&detail=${encodeURIComponent(res.title)}`;
+        fetch(resultActionUrl)
+          .then(res => res.text())
+          .then(data => console.log("Google 試算表結果紀錄成功:", data))
+          .catch(err => console.error("結果傳送失敗:", err));
+      } catch (e) {
+        console.error("結果回傳異常:", e);
+      }
 
       switchTab(0);
       try { confetti({ particleCount: 70, spread: 80, origin: { y: 0.6 } }); } catch (e) {}
